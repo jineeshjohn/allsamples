@@ -1,0 +1,21 @@
+<script src="jquery-1.7.2.js"></script>
+<div id="box">JJJ</div>
+ 
+ 
+<script type="text/javascript">
+ 
+$.ajax({
+	type:"get",
+	dataType:"text",
+	url:"json2.js",
+	dataFilter:function(data,dataType){
+		return data.replace(/<script\b[^>]*>|<\/script>/img,"");
+	},
+	success:function(a,b,c){
+		console.log(a);
+		console.log(b);
+		console.log(c);
+	
+	}
+});
+</script> 

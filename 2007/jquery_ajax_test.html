@@ -1,0 +1,16 @@
+<script src="jquery-1.7.2.js"></script>
+<div id="box">JJJ</div>
+ 
+<script>
+$.ajax({
+	type:"get",
+	 dataType : "json",
+	 url:"https://localhost:8444/console/userwall/listQuickTasks",
+	success:function(a,b,c){
+		console.log(a);
+		console.log(b);
+		console.log(c);
+	
+	}
+});
+</script> 
