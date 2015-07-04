@@ -1,0 +1,329 @@
+ 
+<link rel="shortcut icon" href="/console/images/favicon.ico" />
+<link type="text/css" rel="stylesheet" href="styles/custom-theme/jquery-ui.1.11.2.custom.css" />
+<link type="text/css" rel="stylesheet" href="styles/custom-theme/jquery-ui-1.8.6.customslider.css" />
+<link type="text/css" rel="stylesheet" href="styles/custom-theme/jquery-ui-1.8.6.datepicker.css" />
+<link type="text/css" rel="stylesheet" href="styles/type.css?cicversion=0129" />
+<link type="text/css" rel="stylesheet" href="styles/layout.css?cicversion=0129" />
+<link type="text/css" rel="stylesheet" href="styles/presentation.css?cicversion=0129" />
+
+ <div class="ui-tabs-panel ui-widget-content ui-corner-bottom" id="Optimal_Server_Setup_tab" style="height:80%;overflow-y:auto;">
+						<div>Optimal server setup rating: <span style="color: rgb(204, 51, 51);" class="CSRating" id="optimalServerSetupCategoryRating"><b>Not Secure</b></span></div>
+						<br>
+						<div class="clear">
+							<div class="CSHeader">
+								<div class="CSLHeader">
+									<div class="CSRHeader"><p>Result</p></div>
+									<p>Criteria</p>
+								</div>
+							</div>
+						</div>
+						<div class="clear">
+							<div class="CSOddrow">
+								<div class="CSLHeader">
+									<div class="CSRHeader"><p style="color: rgb(0, 0, 0);" id="cipherAlgorithm">AES</p></div>
+									<p itemval="AES" perfectscore="true">Cipher algorithm</p>
+								</div>
+							</div>
+							<div id="m_cipherAlgorithm" class="e_message_odd" style="display:none" ;="">
+								<p data="IIS">Make sure that the server hosting this certificate supports the Advanced Encryption Standard (AES) cipher algorithm. If the server does not support this, update the server operating system and web server software.</p>
+								<p data="NONIIS">Make sure that the server hosting this certificate supports the Advanced Encryption Standard (AES) cipher algorithm. If the server does not support this, update the web server or load balancer software.</p>
+							</div>
+						</div>
+						<div class="clear">
+							<div class="CSEvenrow">
+								<div class="CSLHeader">
+									<div class="CSRHeader"><p style="color: rgb(0, 0, 0);" id="cipherAlgKeyLength">Greater than 256 Bits</p></div>
+									<p itemval="Greater than 256 Bits" perfectscore="true">Session key size</p>
+								</div>
+							</div>
+							<div id="m_cipherAlgKeyLength" class="e_message_even" style="display:none" ;="">
+								<p data="IIS">For optimal security, make sure that the server hosting this certificate supports a TLS/SSL session with symmetric encryption key sizes of 256 bits or greater. If the server does not support this, update the server operating system and web server software.</p>
+								<p data="NONIIS">For optimal security, make sure that the server hosting this certificate supports a TLS/SSL session with symmetric encryption key sizes of 256 bits or greater. If the server does not support this, update the web server or load balancer.</p>
+							</div>
+						</div>
+						<div class="clear">
+							<div class="CSOddrow">
+								<div class="CSLHeader">
+									<div class="CSRHeader"><p style="color: rgb(255, 0, 0);" id="transportLayerSecurity">TLSv1,SSLv3</p></div>
+									<p style="cursor: pointer;" class="slide" itemval="TLSv1,SSLv3" perfectscore="false">Transport layer security</p>
+								</div>
+							</div>
+							<div id="m_transportLayerSecurity" class="e_message_odd" style="display: block;" ;="">
+								<p style="display: none;" data="IIS">This server uses a cryptographic protocol which is vulnerable to the POODLE attack (refer to <a href="https://knowledge.verisign.com/support/mpki-for-ssl-support/index?page=content&amp;id=AR2182">Knowledge Center Article AR2182</a>). Disable SSLv3 and make sure that the server hosting this certificate supports the TLS (Transport Layer Security) protocol. If the server does not support this, update the server operating system and web server software. Symantec recommends TLS v1.2 or higher.</p>
+								<p style="display: block;" data="NONIIS">This server uses a cryptographic protocol which is vulnerable to the POODLE attack (refer to <a href="https://knowledge.verisign.com/support/mpki-for-ssl-support/index?page=content&amp;id=AR2182">Knowledge Center Article AR2182</a>). Disable SSLv3 sure that the server hosting this certificate supports the TLS (Transport Layer Security) protocol. If the server does not support this, update the web server or load balancer software. Symantec recommends TLS v1.2 or higher.</p>
+								<p style="display: none;" data="IIS_UPGRADE">Symantec recommends TLS v1.2 or higher. If the server does not support this, update the server operating system and web server software.</p>
+								<p style="display: none;" data="NONIIS_UPGRADE">Symantec recommends TLS v1.2 or higher. If the server does not support this, update the web server or load balancer software. </p>  
+							</div>
+						</div>
+						<div class="clear"></div>
+					</div>
+ 
+
+<script src="jquery-1.7.2.js"></script>
+<script>
+
+        var obj = {
+			"categories": {
+            "knownRisksCategory": {
+                "noNullCharacterInCN": {
+                    "perfectScore": true,
+                    "name": "noNullCharacterInCN",
+                    "value": "YES",
+                    "list": null
+                },
+                "sameKeyNotUsedInChain": {
+                    "perfectScore": true,
+                    "name": "sameKeyNotUsedInChain",
+                    "value": "YES",
+                    "list": null
+                },
+                "singleCNInDN": {
+                    "perfectScore": true,
+                    "name": "singleCNInDN",
+                    "value": "YES",
+                    "list": null
+                },
+                "standardWildcardCert": {
+                    "perfectScore": true,
+                    "name": "standardWildcardCert",
+                    "value": "Not applicable",
+                    "list": null
+                },
+                "validCertContent": {
+                    "perfectScore": true,
+                    "name": "validCertContent",
+                    "value": "YES",
+                    "list": null
+                },
+                "score": "Very Secure",
+                "name": "knownRisksCategory"
+            },
+            "optimalServerSetupCategory": {
+                "cipherAlgKeyLength": {
+                    "perfectScore": true,
+                    "name": "cipherAlgKeyLength",
+                    "value": "Greater than 256 Bits",
+                    "list": null
+                },
+                "cipherAlgorithm": {
+                    "perfectScore": true,
+                    "name": "cipherAlgorithm",
+                    "value": "AES",
+                    "list": null
+                },
+                "transportLayerSecurity": {
+                    "perfectScore": false,
+                    "name": "transportLayerSecurity",
+                    "value": "TLSv1,SSLv3",
+                    "list": null
+                },
+                "score": "Not Secure",
+                "name": "optimalServerSetupCategory"
+            },
+            "certStatusCategory": {
+                "isCertValid": {
+                    "perfectScore": true,
+                    "name": "isCertValid",
+                    "value": "YES",
+                    "list": null
+                },
+                "isCertNotExpiredNotRevoked": {
+                    "perfectScore": true,
+                    "name": "isCertNotExpiredNotRevoked",
+                    "value": "YES",
+                    "list": null
+                },
+                "certDomainNameMatch": {
+                    "perfectScore": null,
+                    "name": "certDomainNameMatch",
+                    "value": "Unknown",
+                    "list": null
+                },
+                "certStatusVerifSource": {
+                    "perfectScore": false,
+                    "name": "certStatusVerifSource",
+                    "value": "No",
+                    "list": [{
+                        "name": "localhost.cic.com",
+                        "value": "Not available",
+                        "perfectScore": true
+                    }, {
+                        "name": "rapidICA",
+                        "value": "Not available",
+                        "perfectScore": true
+                    }, {
+                        "name": "rapidCA",
+                        "value": "Not available",
+                        "perfectScore": true
+                    }]
+                },
+                "score": "Not Secure",
+                "name": "certStatusCategory"
+            },
+            "certAttributeCategory": {
+                "rootCaKeyStrength": {
+                    "perfectScore": true,
+                    "name": "rootCaKeyStrength",
+                    "value": "RSA1024",
+                    "list": null
+                },
+                "intermediateCaKeyStrength": {
+                    "perfectScore": null,
+                    "name": "intermediateCaKeyStrength",
+                    "value": "Very Secure",
+                    "list": [{
+                        "name": "rapidICA",
+                        "value": "RSA1024",
+                        "perfectScore": true
+                    }]
+                },
+                "endEntityCertKeyStrength": {
+                    "perfectScore": true,
+                    "name": "endEntityCertKeyStrength",
+                    "value": "RSA1024",
+                    "list": null
+                },
+                "rootCaHashAlgorithmStrength": {
+                    "perfectScore": true,
+                    "name": "rootCaHashAlgorithmStrength",
+                    "value": "SHA1",
+                    "list": null
+                },
+                "intermediateCaHashAlgorithmStrength": {
+                    "perfectScore": null,
+                    "name": "intermediateCaHashAlgorithmStrength",
+                    "value": "Very Secure",
+                    "list": [{
+                        "name": "rapidICA",
+                        "value": "SHA1",
+                        "perfectScore": true
+                    }]
+                },
+                "endEntityCertHashAlgorithmStrength": {
+                    "perfectScore": true,
+                    "name": "endEntityCertHashAlgorithmStrength",
+                    "value": "SHA1",
+                    "list": null
+                },
+                "isAliasMatchSAN": {
+                    "perfectScore": false,
+                    "name": "isAliasMatchSAN",
+                    "value": "NO",
+                    "list": null
+                },
+                "certType": {
+                    "perfectScore": null,
+                    "name": "certType",
+                    "value": "DOMAIN_VERIFICATION",
+                    "list": null
+                },
+                "intermediateCAExpiryDate": {
+                    "perfectScore": false,
+                    "name": "intermediateCAExpiryDate",
+                    "value": "At Risk",
+                    "list": [{
+                        "name": "rapidICA",
+                        "value": "2025-Apr-19- At Risk",
+                        "perfectScore": false
+                    }]
+                },
+                "rootCAExpiryDate": {
+                    "perfectScore": false,
+                    "name": "rootCAExpiryDate",
+                    "value": "2025-Apr-17- At Risk",
+                    "list": null
+                },
+                "score": "At Risk",
+                "name": "certAttributeCategory"
+            }
+        }
+ }
+ 	
+$("#Optimal_Server_Setup_tab .slide" ).live( "click", function(e,param) {
+		var slider = $(this);
+		var id = $(this).prev().children(":first")[0].id;
+		var ele = $("#m_"+id);
+		var messages = ele.find("p");
+		if((ele.hasClass("e_message_even") || ele.hasClass("e_message_odd")) && slider.hasClass("slideDown")) {			
+			if(messages.attr("data")) {
+				messages.hide();
+				if(messages[0].getAttribute("data") == "RSA") {
+					var r_ele = $("#"+id);
+					if(r_ele.html().indexOf("DSA") != -1) ele.find("p[data='DSA']").show();
+					else if(r_ele.html().indexOf("ECC") != -1) ele.find("p[data='ECC']").show();
+					else ele.find("p[data='RSA']").show();
+				}
+				else if(messages[0].getAttribute("data") == "IIS"){
+					//var resObj = clientObj.getInstance().getScoreObject(),
+					var	perfectScore = slider.attr("perfectScore"); 
+						itemVal = slider.attr("itemVal"); 
+					var s_name = "internet information services";
+					if(s_name.indexOf("iis") != -1 || s_name == "internet information services") {
+						if(itemVal == "TLSv1" && perfectScore == "true"){
+							ele.find("p[data='IIS_UPGRADE']").show();
+						}else{
+							ele.find("p[data='IIS']").show();
+						}
+					}else{
+						if(itemVal == "TLSv1" && perfectScore == "true"){							
+							ele.find("p[data='NONIIS_UPGRADE']").show();
+						}else{
+							ele.find("p[data='NONIIS']").show();
+						} 
+					}					 
+				}
+				else if(messages[0].getAttribute("data") == "SHA1"){
+					var r_ele = $("#"+id);
+					if(r_ele.html().toLowerCase().indexOf("sha1") != -1) {
+						ele.find("p[data='SHA1']").show();
+					}
+					else ele.find("p[data='Not_SHA1']").show();
+				}
+			}
+		} 
+		
+		if (messages.filter(':visible')) { 			
+			ele.toggle();
+			slider.toggleClass("slideDown", ele.is(":visible"));
+			 
+		}  
+	});  
+ 
+ $.each(obj.categories, function(i, category){			 
+			$.each(category, function(i, oItem){
+				if(!oItem || !oItem.name) return true;
+				var ele = $("#"+oItem.name);
+				var slider = ele.parent().next();
+				slider.attr({"perfectScore":oItem.perfectScore,itemVal:oItem.value});
+				if(oItem.perfectScore && oItem.value == "TLSv1") {
+					ele.html(oItem.value).css("color", "#000000");
+					slider.addClass("slide").css("cursor", "pointer");
+					slider.trigger("click",oItem);
+				}
+				else if(oItem.value != "TLSv1" && oItem.perfectScore == false || oItem.value == "Other") {
+					if(oItem.value == "NO") oItem.value = "No";
+					ele.html(oItem.value).css("color", "#FF0000");
+					slider.addClass("slide").css("cursor", "pointer");
+					slider.trigger("click",oItem);
+				}
+				else {
+					if(oItem.value == "YES") oItem.value = "Yes";
+					ele.html(oItem.value).css("color", "#000000");
+					if(!oItem.list) slider.removeClass("slide slideDown");
+					else {
+						//slider.removeClass("slideDown").addClass("slide");
+						var list = oItem.list;
+						for(var i=0;i<list.length; i++){
+							if(list[i].perfectScore == false) {
+								ele.css("color", "#FF0000");
+								slider.trigger("click",oItem);
+								break;
+							}
+						}
+					}
+				}
+			});
+		});
+	
+</script>

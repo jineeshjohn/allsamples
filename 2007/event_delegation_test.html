@@ -1,0 +1,87 @@
+
+
+ <div id="automationApplicationDetails" lastindex="1">
+    <div id="583327" class="boxFrame frameref1">
+        <div class="conflictRowTitle">Microsoft IIS 6</div>
+        <div class="conflictRowDesc">
+            <div class="appDetailsIpPort">
+                <p><strong>IP address</strong>
+                </p>
+                <p>10.141.18.139</p>
+            </div>
+            <div class="appDetailsIpPort">
+                <p><strong>Port</strong>
+                </p>
+                <p>443</p>
+            </div>
+            <div class="break"></div>
+        </div>
+        <div class="expandableSections applicationExpander">
+            <section>
+                <h3 class="slide statusnotconfigured slideDown"><span class="appConfigLinkIcon appConfigLinkIconNotConfigured "></span><span class="configStatusText">Server information needed</span></h3>
+                <div style="" class="slideContainer">
+                    <div class="break"></div>
+                    <div class="break"></div>
+                    <div class="messagesContainer padBot5"><span style="display: block;" class="message fieldMsg msgCatALERT"><div class="icon"></div><div class="text">Internal error. If the error persists, contact Symantec Customer Support. Reference code:1d10600</div></span>
+                    </div>
+                    <div class="break"></div>
+                </div>
+            </section>
+        </div>
+        <div class="expandableSections scriptsExpander">
+            <section>
+                <h3 class="slide slideDown"><span class="configStatusText">Scripts</span></h3>
+                <div style="" class="slideContainer">
+                    <div class="FormFieldContainerNoIndent">
+                        <div class="FormElementLabelContainer fLeft padBot10">
+                            <label><strong>Custom scripts:</strong>
+                            </label>
+                        </div>
+                        <div class="fLeft"><span class="padLeft15"><input type="radio" checked="checked" value="1" name="enableCustomScripts0" class="enableCustomScripts0" id="enableCustomScripts0"><label for="enableCustomScripts0">Enable</label></span><span class="padLeft15"><input type="radio" checked="checked" value="0" name="enableCustomScripts0" class="enableCustomScripts0" id="disableCustomScripts0"><label for="disableCustomScripts0">Disable</label></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="automationLastValidated">Server application details last checked on 2015-Mar-13 3:11pm GMT+0530</div>
+    </div>
+</div>
+
+ 
+<script src="jquery-1.7.2.js"></script>
+<script>
+	$("#automationApplicationDetails").on("click", function(event){
+		event = event || window.event;
+		var elem = null;
+		if (event.srcElement)  elem = event.srcElement;
+		else if (event.target) elem = event.target;
+		var _elem = $(elem);
+		if(elem.nodeName == "H3"){
+			_elem.toggleClass("slideDown").next().slideToggle();
+		}
+		else if(elem.nodeName == "INPUT") {
+			if(_elem.hasClass("appConfigUseNew")) {
+				var appTypeVersion = _elem.closest('div.FormFieldContainerNoIndent').next('div.appTypeVersion');
+				var appType = appTypeVersion.find("select.ddnAppType");
+				var appVersion = appTypeVersion.find("select.ddnAppVersion");
+				//appTypeVersion.hide();
+				appType.val(appType.attr('new')).change();
+				appVersion.val(appVersion.attr('new')).change();
+			}
+			else if(_elem.hasClass("appConfigKeepPrevious")) {
+				var appTypeVersion = _elem.closest('div.FormFieldContainerNoIndent').next('div.appTypeVersion');
+				var appType = appTypeVersion.find("select.ddnAppType");
+				var appVersion = appTypeVersion.find("select.ddnAppVersion");
+				//appTypeVersion.show();
+				appType.val(appType.attr('old')).change();
+				appVersion.val(appVersion.attr('old')).change();
+			}
+			
+		}
+		return true;
+		event.cancelBubble = true;
+		if (event.stopPropagation) event.stopPropagation();
+		return false;
+	});
+
+</script>

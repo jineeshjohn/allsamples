@@ -1,0 +1,26 @@
+<div id="nav">
+	<p id="p1">p1</p>
+	<p id="p2">p2</p>
+	<p id="p3">p3</p>
+	<p id="p4">p4</p>
+</div>
+
+<button onclick="foo()">jjjj</button>
+<script src="jquery-1.7.2.js"></script>
+<script>
+function foo(){
+	var jj = ["1","2","3"];
+	console.log("ddddddd");
+	 $("#p4").trigger( "click", {a:1,b:2} );
+ }
+
+$("#nav p").live("click", function(elem,param){
+	console.log(param);
+});
+
+var ff = new Boolean("false");
+console.log(ff);
+
+ 
+</script>
+

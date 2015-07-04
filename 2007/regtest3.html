@@ -1,0 +1,27 @@
+<script src="jquery-1.7.2.js"></script>
+<script>
+   // var validDomainName = /^[a-zA-Z0-9]+([\-\.]{1}[a-zA-Z0-9]+)*\.[a-zA-Z]{2,5}$/; 
+	//var validDomainName = /^[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}$/; 
+	//var validDomainName = /(1\d{0,2}|2(?:[0-4]\d{0,1}|[6789]|5[0-5]?)?|[3-9]\d?|0)\.(1\d{0,2}|2(?:[0-4]\d{0,1}|[6789]|5[0-5]?)?|[3-9]\d?|0)\.(1\d{0,2}|2(?:[0-4]\d{0,1}|[6789]|5[0-5]?)?|[3-9]\d?|0)\.(1\d{0,2}|2(?:[0-4]\d{0,1}|[6789]|5[0-5]?)?|[3-9]\d?|0)(\/(1\d{0,2}|2(?:[0-4]\d{0,1}|[6789]|5[0-5]?)?|[3-9]\d?|0)){0,2}|(-)$/;
+	//var validDomainName = /^(?!-)([a-z0-9\-]|[\u00A1-\uFFFF])+(\.(?!-)([a-z0-9\-]|[\u00A1-\uFFFF]){2,32})+(\.[a-zA-Z]{2,5})$/i;
+	var validDomainName2 = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/;
+ 
+	var validDomainName = /^(?!-)([a-z0-9\-]|[\u00A1-\uFFFF])+(\.(?!-)([a-z0-9\-]|[\u00A1-\uFFFF]){2,63})+(\.[a-zA-Z]{2,5})$/i;
+	var validDomainName2 = /^[a-zA-Z0-9][a-zA-Z0-9-]{1,61}[a-zA-Z0-9]\.[a-zA-Z]{2,}$/;
+ 
+ 
+ 
+ //^(?!-)([a-z0-9\\-]|[\\u00A1-\\uFFFF])+(\\.(?!-)([a-z0-9\\-]|[\\u00A1-\\uFFFF]){2,32})+(\\.[a-zA-Z]{2,5})$
+ 
+	function isValidDomainName (domainname){
+		if(domainname.indexOf("--")){
+			return false;
+		}
+		var regex = (domainname.split(".").length > 2 )?validDomainName:validDomainName2;
+		var name = $.trim(domainname);		 
+		if(name.length > 255 || name.indexOf("-.") != -1 || name.indexOf(".-") != -1) return false;
+		return (regex.test(name))?true:false;
+	}
+ 
+ 
+</script>

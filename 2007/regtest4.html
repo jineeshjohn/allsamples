@@ -1,0 +1,20 @@
+<textarea id="jjj">
+abc--xyz.com abcd--xyz.com	abcdf--xyz.com
+abc--xyz.com
+</textarea>
+<script> 
+var str = jjj.value;
+
+var arr = [];
+str = str.replace(/(\s)+|(\n)+|(\t)+|(\;)+|(\,)+|(\:)+/g, ' ');
+/* replaces the \n,\t,\s with whitespace */
+//str = str.replace(/(\s)*(-)+(\s)*/g, '-');
+//str = str.replace(/(-)+/g, '-');
+arr = str.split(/\s/);
+var checkDuplicateList = [];
+
+
+"abc--xyz.com abcd--xyz.combbc--xyz.com	abcd--xyz.com	cbc--xyz.com"
+"abc--xyz.com abcd--xyz.combbc--xyz.com abcd--xyz.com cbc--xyz.com"
+
+</script>
