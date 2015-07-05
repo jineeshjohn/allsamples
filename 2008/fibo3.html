@@ -1,0 +1,19 @@
+<script>
+function fib( x ) {
+    if(x < 2) 
+		return 1; 
+	else 
+		return fib(x-1) + fib(x-2);
+}
+/*console profiling test*/
+var fibTest = memoize(fib);
+//first call
+console.time("non-memoized call");
+console.log(fibTest(20)); //varies (eg.10946)
+console.timeEnd("non-memoized call");
+//let's see how much better memoization fares..
+console.time("memoized call");
+console.log(fibTest(20));
+//0ms in most cases (if already cached)
+console.timeEnd("memoized call");
+</script>

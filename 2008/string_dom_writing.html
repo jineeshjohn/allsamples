@@ -1,0 +1,10 @@
+<div id="mydom"></div>
+<script>
+var pElem = document.getElementById("mydom");
+var myvar = unescape('%3Cdiv%3E%20parent%20div%20%0A%09%3Cdiv%3E%20Child%20element%20%3C/div%3E%0A%3C/div%3E');
+for( var i = 0;i<100;i++){
+	//pElem.appendChild(myvar);
+	document.write( myvar );
+}
+
+</script>

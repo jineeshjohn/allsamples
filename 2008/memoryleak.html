@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <script type="text/javascript" src="http://maps.google.com/maps?file=api&amp;v=2&amp;oe=utf-8&amp;key=open_me_as_file_so_that_no_key_is_necessary"></script>
+        <script>
+            function init()
+            {
+                map = new GMap2(document.getElementById("map_canvas"), {mapTypes : [G_NORMAL_MAP],
+                                                                        draggableCursor : "crosshair"})
+                line = new GPolyline(new Array(), "#0090EE", 2, { clickable: false, geodesic: false })
+                map.addOverlay(line)
+                map.setCenter(new GLatLng(49, 9), 12)
+                map.addControl(new GLargeMapControl())
+                map.disableDoubleClickZoom()
+
+                GEvent.addListener(map, "dblclick",
+                    function(overlay, clickedPoint)
+                    {
+                        if(!overlay)
+                            line.insertVertex(0, clickedPoint)
+                    }
+                )
+            }
+
+            lat = 49
+            lng = 9
+            function doSomething()
+            {
+                for(var i = 0; i < 50; ++i)
+                {
+                    lat += 0.05
+                    lng += 0.03
+                    line.insertVertex(0, new GLatLng(lat, lng))
+                }
+                document.getElementById("debug").innerHTML = line.getVertexCount() + " points"
+            }
+        </script>
+    </head>
+    <body onload="init();">
+        <div id="map_canvas" style="width: 500px; height: 300px"></div>
+        <div id="debug"></div>
+        <button onclick="doSomething();">Add 50 points</button>
+    </body>
+</html>

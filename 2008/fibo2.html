@@ -1,0 +1,17 @@
+<script>
+
+var fibonacci = function () {
+  var memo = [0, 1];
+  var fib = function (c) {
+    result = memo[c];
+    if (typeof result !== 'number'){
+      result = fib(c - 1) + fib(c - 2);
+      memo[c] = result;
+    }
+    return result;
+  };
+  return fib;
+}();
+
+console.log(fibonacci(6));
+</script>

@@ -1,0 +1,25 @@
+<script>
+function Pipe(){
+	this.tree = new Tree();
+	this.rack = new Rack();
+	this.grid = new Grid();
+	
+	this.init = function(){
+		this.tree.closeMe();
+	}
+};
+
+function Tree(){
+	this.closeMe = function(){
+		alert( "I am closing" );
+	}
+};
+
+function Grid(){};
+
+function Rack(){};
+
+var p = new Pipe();
+//p.init();
+
+</script>

@@ -1,0 +1,19 @@
+<script>
+ /**
+  *Closure Tests
+  *
+  *
+  *
+  *
+  */
+
+
+function Foo(){
+	var x = 10;
+	return function(){
+		var y = 20;
+		return x + y;
+	}
+}
+var fn = Foo();
+</script>

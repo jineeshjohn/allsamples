@@ -1,0 +1,30 @@
+<script>
+/**
+ *obj.constructor vs obj.constructor
+ *		&&
+ *fn.constructor vs fn.prototype.constructor
+ cntor.prototype 			= type function
+ fn.prototype 	 			= type object
+ fn.constructor  			= type function ( always type Capital F Function )
+ fn.prototype.constructor	= type function ( fn function itself )
+ fn.constructor.prototype   = type function ( fn.constructor is Capital F Function )
+ 
+ */
+var obj = {name:"Jineesh"};
+var octor = obj.constructor;
+var opctor = obj.constructor.prototype;
+
+function Car(){};
+Car.prototype = {name:"Ravi"};
+
+var cc = new Car();
+
+cc.constructor.prototype = {name:"Jineesh"};
+
+
+/*
+Car.prototype = {name:"Ravi"};
+cc.constructor.prototype = {name:"John"}; */
+console.log( cc.constructor.prototype.name );
+
+</script>

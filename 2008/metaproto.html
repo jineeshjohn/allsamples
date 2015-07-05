@@ -1,0 +1,49 @@
+<style>
+.fail{
+	color: red;
+};
+.pass{
+	color: green;
+};
+</style>
+
+<div id="jstester"></div>
+<script src="util.js"></script>
+<script>
+// there is constructor.prototype and prototype.constructor
+/**
+ * prototype's constructor  
+ * @returns function type
+ */
+
+
+function Car(){};
+var c = new Car();
+
+var cproto = Car.prototype.constructor;
+var oproto = Object.prototype.constructor;
+var aproto = Array.prototype.constructor;
+var rproto = RegExp.prototype.constructor;
+var dproto = Date.prototype.constructor;
+var nproto = Number.prototype.constructor;
+var sproto = String.prototype.constructor;
+var $proto = (function(){}).prototype.constructor;
+var fproto = Function.prototype.constructor;
+
+
+
+console.log(" cproto",cproto );
+console.log(" oproto",oproto );
+console.log(" aproto",aproto );
+console.log(" rproto",rproto );
+console.log(" dproto",dproto );
+console.log(" nproto",nproto );
+console.log(" sproto",sproto );
+console.log(" $proto",$proto );
+console.log(" fproto",fproto );
+ 
+
+// assert(fnproto, Car.prototype);
+// assertEqual(fnproto, Car.prototype);
+
+</script>

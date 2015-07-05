@@ -1,0 +1,12 @@
+<script>
+var i, fib = [], arr = [];
+fib[0] = 0;
+fib[1] = 1;
+arr.push( fib[0] );
+arr.push( fib[1] );
+for(i=2; i<=12; i++){
+    fib[i] = fib[i-2] + fib[i-1];   
+    arr.push( fib[i] );
+}
+console.log( arr  );
+</script>

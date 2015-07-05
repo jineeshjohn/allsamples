@@ -1,0 +1,36 @@
+<style>
+.fail{
+	color: red;
+};
+.pass{
+	color: green;
+};
+</style>
+
+<div id="jstester"></div>
+<script src="util.js"></script>
+<script>
+/**
+ * Constructor tests
+ * @returns function type
+ * All constructors are pointing to function Function() { [native code] }
+ */
+
+function Car(){};
+var fcntor = Function.constructor;
+var ocntor = Object.constructor;
+var ccntor = Car.constructor;
+var rcntor = RegExp.constructor;
+var ncntor = Number.constructor;
+var acntor = Array.constructor;
+
+console.log("fcntor",fcntor);
+console.log("ocntor",ocntor);
+console.log("ccntor",ccntor);
+console.log("rcntor",rcntor);
+console.log("ncntor",ncntor);
+console.log("acntor",acntor);
+
+
+
+</script>

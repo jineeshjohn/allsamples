@@ -1,0 +1,34 @@
+<script>
+function $E(){
+    this._listeners = {};
+}
+ 
+$E.prototype = {
+    constructor: $E,
+    subscribe: function(evt, cb){         
+        this._listeners[evt]  = cb;
+    },
+    fire: function(event){
+        if (typeof event == "string"){
+            event = { type: event };
+        }
+        if (!event.target){
+            event.target = this;
+        }
+        if (this._listeners[event.type] ){
+            this._listeners[event.type].call(this,event);           
+        }
+    }
+};
+ 
+//Usage
+var myEvent = new $E();
+ 
+myEvent.subscribe("hey", function(){
+    alert("Custom event triggered!!! :)");
+});
+ 
+ 
+myEvent.fire("hey");
+
+</script>

@@ -1,0 +1,86 @@
+
+<script type="text/javascript">
+function toggle(expandable){
+    if(expandable.parentNode.getElementsByTagName("ul")[0].className=="hide"){
+        expandable.parentNode.getElementsByTagName("ul")[0].className="show";
+        expandable.innerHTML="▼";
+    }
+    else{
+        expandable.parentNode.getElementsByTagName("ul")[0].className="hide";
+        expandable.innerHTML="►";
+    }
+}
+
+var previousSpan;
+
+function replyForm(span,postId,op,commentID){
+    if(removeForm(span))
+        return;
+    previousSpan=span;
+
+    if(span.nextSibling!=null){
+        span.parentNode.insertBefore(form(span,postId,op,commentID),span.nextSibling);
+    }
+    else{
+        span.parentNode.appendChild(form(span,postId,op,commentID));
+    }
+}
+
+function removeForm(span){
+    if(previousSpan==null)
+        return false;  <-- Out of memory here according to IE
+    if(previousSpan.parentNode.getElementsByTagName("form").length!=0)
+previousSpan.parentNode.removeChild(span.parentNode.getElementsByTagName("form")[0]);
+    var result=(span==previousSpan);
+    if(result)
+        collapse(previousSpan);
+previousSpan=null;
+return result;
+}
+
+function form(span,postId,op,commentID){
+var result=
+"<form id=\"commentform\" method=\"post\" action=\"http://innategamer.300mb.us/wp-comments-post.php\">\n"+
+"<p>Replying to "+op+":</p>\n"+
+"<p><label for=\"author\">Name *</label><input id=\"author\" type=\"text\" aria-required=\"true\" size=\"30\" value=\"\" name=\"author\"></p>\n"+
+"<p>Email *<input id=\"email\" type=\"text\" aria-required=\"true\" size=\"30\" value=\"\" name=\"email\"></p>\n"+
+"<p>Website<input id=\"url\" type=\"text\" size=\"30\" value=\"\" name=\"url\"></p>\n"+
+"<textarea id=\"comment\" aria-required=\"true\" rows=\"8\" cols=\"45\" name=\"comment\"></textarea>\n"+
+"<input id=\"submit\" type=\"submit\" value=\"Post Comment\" name=\"submit\">\n"+
+"<input id=\"comment_post_ID\" type=\"hidden\" value=\""+postId+"\" name=\"comment_post_ID\">\n"+
+"<input id=\"comment_parent\" type=\"hidden\" value=\""+commentID+"\" name=\"comment_parent\">\n"+
+"</form>";
+    var div=document.createElement('div');
+    div.innerHTML=result;
+    return div.firstChild;
+}
+
+function replyExpand(span){
+    if(span.innerHTML.indexOf("▼")!=-1)
+        collapse(span);
+    else
+        expand(span);
+}
+
+function collapse(span){
+    if(previousSpan==span)
+        removeForm(span);
+    span.innerHTML=span.innerHTML.replace("▼","►");
+    while(span.nextSibling!=null){
+        span=span.nextSibling;
+        if(span.className=="comment-content show");
+            span.className="comment-content hide";
+    }
+}
+
+function expand(span){
+    span.innerHTML=span.innerHTML.replace("►","▼");
+    while(span.nextSibling!=null){
+        span=span.nextSibling;
+        if(span.className=="comment-content hide");
+            span.className="comment-content show";
+    }
+}
+
+replyExpand();
+</script>

@@ -1,0 +1,47 @@
+<style>
+.fail{
+	color: red;
+};
+.pass{
+	color: green;
+};
+</style>
+
+<div id="jstester"></div>
+<script src="util.js"></script>
+<script>
+/**
+ * Constructor instance tests
+ * All instances return what constructor returns with some conditions
+ * a) if primitive then return the constructor
+ * b) if reference type then return the reference type ( eg: Object, Array , function)
+ */
+
+function Car(){
+	 
+	return ;
+}; 
+var cinstance = new Car();
+var oinstance = new Object();
+var ainstance = new Array();
+var rinstance = new RegExp();
+var $instance = new function(){};
+var dinstance = new Date();
+var sinstance = new String();
+var ninstance = new Number();
+var binstance = new Boolean();
+var finstance = new Function();
+
+console.log("cinstance",cinstance);
+console.log("oinstance",oinstance);
+console.log("ainstance",ainstance);
+console.log("rinstance",rinstance);
+console.log("$instance",$instance);
+console.log("dinstance",dinstance);
+console.log("sinstance",sinstance);
+console.log("ninstance",ninstance);
+console.log("binstance",binstance);
+console.log("finstance",finstance);
+
+
+</script>
