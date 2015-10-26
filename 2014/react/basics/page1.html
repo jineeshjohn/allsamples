@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Case</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src='JSXTransformer.js'></script>
+    <script src='react-with-addons.js'></script>
+    <script type='text/jsx'>
+        var Hello = React.createClass({ 
+	        	render: function() { 
+	        		return ( 
+				    <div className="container">
+				        <div className="jumbotron">
+				            <h1>My first Bootstrap website!</h1>
+				            <p>This page will grow as we add more and more components from Bootstrap...</p>
+				            <a href="#" className="btn btn-info btn-lg"><span className="glyphicon glyphicon-search"></span> Search</a>
+				        </div>
+				        <div className="row">
+				            <div className="col-md-3">
+				                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				            </div>
+				            <div className="col-md-6">
+				                <p><strong>Note: On a large screen the content will be displayed as a three-column layout. (Just enlarge the browser window to see the effect). However, the content will automatically adjust itself into a single-column layout on a small screen. So, with Bootstrap, our page is now responsive to the screen size and adjusts itself accordingly.</strong></p>
+				            </div>
+				            <div className="col-md-3">
+				                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam. Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+				            </div>
+				        </div>
+				    </div>	        			
+	        		); 
+        	} 
+        }); 
+        React.render( <Hello name="World" />, document.body);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

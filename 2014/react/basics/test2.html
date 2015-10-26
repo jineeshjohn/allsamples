@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Case</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src='react-with-addons.js'></script>
+    <script src='JSXTransformer.js'></script>
+   
+</head>
+
+<body>
+
+    <script type='text/jsx'>
+    /** @jsx React.DOM */
+
+    var Child = React.createClass({
+      render: function () {
+        return <button onClick={this.props.onClick}>{this.props.text}</button>;
+      },
+
+    });
+
+
+    var Parent = React.createClass({
+      getInitialState: function() {
+         return {childText: "Click me! (parent prop)"};
+      },
+      render: function () {
+        return (
+          <Child onClick={this.handleChildClick} text={this.state.childText}/>
+        );
+      },
+
+      handleChildClick: function(event) {
+         console.log("The Child button text is: " + this.state.childText);
+         console.log("The Child HTML is: " + event.target.outerHTML);
+      }
+    });
+
+    React.render(<Parent />, document.body);
+    </script>
+ </body>
+
+</html>
